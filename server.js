@@ -10,6 +10,11 @@ var corsOptions = {
 
 app.use(cors(corsOptions));
 
+const db = require("./app/models");
+db.sequelize.sync({ force: true }).then(() => {
+    console.log("Drop and re-sync db.");
+  });
+
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 
@@ -20,6 +25,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to the API of the Neuleininger Blaskapelle." });
 });
+
+require("./app/routes/tutorial.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
