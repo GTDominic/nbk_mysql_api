@@ -1,0 +1,34 @@
+{
+  "name": "nbk_mysql_api",
+  "version": "1.0.0",
+  "description": "Node.js API for Neuleininger Blaskapelle",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GTDominic/nbk_mysql_api.git"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "sequelize",
+    "mysql",
+    "rest",
+    "api"
+  ],
+  "author": "GTDominic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GTDominic/nbk_mysql_api/issues"
+  },
+  "homepage": "https://github.com/GTDominic/nbk_mysql_api#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.1.0",
+    "sequelize": "^5.21.6"
+  }
+}
