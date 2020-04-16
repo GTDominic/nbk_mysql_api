@@ -18,3 +18,21 @@
 
 //     return Musiker;
 //   };
+
+'use strict';
+module.exports = (sequelize, DataTypes) => {
+    var Musiker = sequelize.define('Musiker', {
+        title: DataTypes.STRING
+    });
+
+    Musiker.associate = function (models) {
+        models.Musiker.belongsTo(models.Instrument, {
+            onDelete: "CASCADE",
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
+
+    return Musiker;
+};
