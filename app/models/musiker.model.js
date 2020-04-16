@@ -22,15 +22,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     var Musiker = sequelize.define('Musiker', {
-        title: DataTypes.STRING
+        title: DataTypes.STRING,
+        instrumentid: {
+            type: DataTypes.INTEGER,
+            references: {model: sequelize.models.Instrument, key: 'id'}
+        }
     });
 
     Musiker.associate = function (models) {
         models.Musiker.belongsTo(models.Instrument, {
-            onDelete: "CASCADE",
-            foreignKey: {
-                allowNull: false
-            }
+            as: 'Instrument',
+            foreignKey: 'instrumentid'
         });
     };
 
