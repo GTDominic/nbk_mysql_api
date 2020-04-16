@@ -9,5 +9,6 @@ module.exports = {
       min: 0,
       acquire: 30000,
       idle: 10000
-    }
+    },
+    forceSync: true     //Enable dropping and creating tables. Should be deactivated if not in testing.
   };

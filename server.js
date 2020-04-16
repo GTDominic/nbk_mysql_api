@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dbConfig = require("./app/config/db.config.js");
 
 const app = express();
 
@@ -11,7 +12,7 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 const db = require("./app/models");
-db.sequelize.sync({ }).then(() => {
+db.sequelize.sync({ force: dbConfig.forceSync }).then(() => {
     console.log("Re-sync db.");
   });
 
