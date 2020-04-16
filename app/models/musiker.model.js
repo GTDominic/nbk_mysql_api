@@ -22,7 +22,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
     var Musiker = sequelize.define('Musiker', {
-        title: DataTypes.STRING,
+        name: DataTypes.STRING,
         instrumentid: {
             type: DataTypes.INTEGER,
             references: {model: sequelize.models.Instrument, key: 'id'}
