@@ -1,5 +1,6 @@
 const db = require("../models");
 const Musiker = db.musiker;
+const dbConfig = require("../config/db.config.js");
 // const Op = db.Sequelize.Op;
 
 // Creates a new Musiker
@@ -10,12 +11,20 @@ const Musiker = db.musiker;
 }
 */
 exports.create = (req, res) => {
+    // Check if create function is deactivated in config
+    if(dbConfig.musikerEditing == false){
+        res.status(405).send({
+            message: "Editing and deleting of Musikers deactivated in config."
+        });
+        return;
+    }
+
     // Validate request
     if (!req.body.name) {
         res.status(400).send({
             message: "Name can not be empty!"
         });
-    return;
+        return;
     }
 
     // Create a Musiker
