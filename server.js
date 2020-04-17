@@ -1,6 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const dbConfig = require("./app/config/db.config.js");
 
 const app = express();
 
@@ -11,8 +12,8 @@ var corsOptions = {
 app.use(cors(corsOptions));
 
 const db = require("./app/models");
-db.sequelize.sync({ force: true }).then(() => {
-    console.log("Drop and re-sync db.");
+db.sequelize.sync({ force: dbConfig.forceSync }).then(() => {
+    console.log("Re-sync db.");
   });
 
 // parse requests of content-type - application/json
@@ -26,7 +27,9 @@ app.get("/", (req, res) => {
   res.json({ message: "Welcome to the API of the Neuleininger Blaskapelle." });
 });
 
-require("./app/routes/tutorial.routes.js")(app);
+// require("./app/routes/tutorial.routes.js")(app);
+require("./app/routes/musiker.routes.js")(app);
+require("./app/routes/instrument.routes.js")(app);
 
 // set port, listen for requests
 const PORT = process.env.PORT || 8080;
