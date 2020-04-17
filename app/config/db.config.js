@@ -11,5 +11,5 @@ module.exports = {
     idle: 10000
   },
   forceSync: false,     //Enable dropping and creating tables. Should be deactivated if not in testing.
-  musikerEditing: false
+  musikerEditing: true
 };
