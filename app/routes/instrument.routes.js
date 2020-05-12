@@ -1,4 +1,4 @@
-module.exports = musiker => {
+module.exports = instrument => {
     const instruments = require("../controllers/instrument.controller.js");
   
     var router = require("express").Router();
@@ -15,5 +15,5 @@ module.exports = musiker => {
     // Retrieve all Musiker
     router.get("/", instruments.findAll);
   
-    musiker.use('/api/instrument', router);
+    instrument.use('/api/instrument', router);
   };

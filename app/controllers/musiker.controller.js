@@ -30,7 +30,8 @@ exports.create = (req, res) => {
     // Create a Musiker
     const musiker = {
         name: req.body.name,
-        instrumentid: req.body.instrumentid
+        instrumentid: req.body.instrumentid,
+        vorstandtype: req.body.vorstandtype
     };
 
     // Save Musiker in the database
