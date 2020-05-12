@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.INTEGER,
             references: {model: sequelize.models.Instrument, key: 'id'}
         },
-        vorstandtype: DataTypes.INTEGER
+        vorstandtype1: DataTypes.INTEGER,
+        vorstandtype2: DataTypes.INTEGER
     });
 
     Musiker.associate = function (models) {
