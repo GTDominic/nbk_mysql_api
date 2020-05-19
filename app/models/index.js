@@ -22,5 +22,6 @@ db.sequelize = sequelize;
 // db.tutorials = require("./tutorial.model.js")(sequelize, Sequelize);
 db.instrument = require("./instrument.model.js")(sequelize, Sequelize);
 db.musiker = require("./musiker.model.js")(sequelize, Sequelize);
+db.auftritte = require("./auftritte.model.js")(sequelize,Sequelize);
 
 module.exports = db;
