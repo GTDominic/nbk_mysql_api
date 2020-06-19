@@ -2,6 +2,9 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const dbConfig = require("./app/config/db.config.js");
+const passport = require('passport');
+const session = require('express-session');
+const env = require('dotenv').load();
 
 const app = express();
 
@@ -15,6 +18,11 @@ const db = require("./app/models");
 db.sequelize.sync({ force: dbConfig.forceSync }).then(() => {
     console.log("Re-sync db.");
   });
+
+// For Passport
+app.use(session({ secret: 'keyboard cat', resave: true, saveUninitialized: true})); //session secret
+app.use(passport.initialize());
+app.use(passport.session()); //persistent login sessions
 
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
