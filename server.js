@@ -4,7 +4,6 @@ const cors = require("cors");
 const dbConfig = require("./app/config/db.config.js");
 const passport = require('passport');
 const session = require('express-session');
-const env = require('dotenv').load();
 
 const app = express();
 
