@@ -42,5 +42,6 @@ db.sequelize = sequelize;
 db.instrument = require("./instrument.model.js")(sequelize, Sequelize);
 db.musiker = require("./musiker.model.js")(sequelize, Sequelize);
 db.auftritte = require("./auftritte.model.js")(sequelize,Sequelize);
+db.user = require("./user.model.js")(sequelize,Sequelize);
 
 module.exports = db;
