@@ -16,38 +16,24 @@ exports.signup = (req, res) => {
     var username = req.body.username;
     var email = req.body.email;
 
-    // Check if username is in use
-    // User.findOne({
-    //   where: {username: username}
-    // }).then(data => {
-    //   userver = data;
-    // }).catch(err => {});
+    // Check if email or username is already in use
+    User.findOne({where: { email: email }}).then(function(user){
+      if (!user){} else {
+        res.status(400).send({
+          message: "Email already in use!"
+        });
+        return;
+      }
+    });
 
-    // Check if email is in use
-    // User.findByPk(id)
-    //   .then(data => {
-    //     res.send("I'm here!");
-    //   }).catch(err => {});
-
-    // if(userver == false){
-    //   res.status(400).send({
-    //     message: "Username already in use!"
-    //   })
-    //   return;
-    // }
-    // if(emailver == false){
-    //   res.status(400).send({
-    //     message: "Email already in use!"
-    //   })
-    //   return;
-    // }
-
-    const emailver = User.findOne({where: { email: email } });
-
-    if(emailver === null){}else{
-      res.send("Email already in use!");
-      return;
-    }
+    User.findOne({where: { username: username }}).then(function(user){
+      if (!user){} else {
+        res.status(400).send({
+          message: "Username already in use!"
+        });
+        return;
+      }
+    });
     
     // hashing password
     var hashedPassword = bCrypt.hashSync(req.body.password, bCrypt.genSaltSync(8), null);
